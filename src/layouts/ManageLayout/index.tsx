@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './index.module.scss';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Space, Layout } from 'antd';

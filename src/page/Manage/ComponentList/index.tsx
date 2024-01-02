@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from '../list.module.scss';
 import ListSearch from '@/components/ListSearch';
 
-const TemplateList: FC = () => {
+const ComponentList: FC = () => {
     return (
         <>
             <div className={styles.header}>
@@ -14,4 +14,4 @@ const TemplateList: FC = () => {
     );
 };
 
-export default TemplateList;
+export default ComponentList;

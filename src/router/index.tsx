@@ -1,22 +1,21 @@
-import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import MainLayout from '../layouts/MainLayout';
-import Home from '../page/Home';
-import Login from '../page/Login';
-import Register from '../page/Register';
+import MainLayout from '@/layouts/MainLayout';
+import Home from '@/page/Home';
+import Login from '@/page/Login';
+import Register from '@/page/Register';
 
-import ManageLayout from '../layouts/ManageLayout';
-import LemmaList from '../page/Manage/LemmaList';
-import TemplateList from '../page/Manage/TemplateList';
-import ComponentList from '../page/Manage/Component';
+import ManageLayout from '@/layouts/ManageLayout';
+import LemmaList from '@/page/Manage/LemmaList';
+import TemplateList from '@/page/Manage/TemplateList';
+import ComponentList from '@/page/Manage/ComponentList';
 
-import NotFound from '../page/NotFound';
+import NotFound from '@/page/NotFound';
 
-import ConfigLayout from '../layouts/ConfigLayout';
-import ComponentConfig from '../page/Config/Component';
-import TemplateConfig from '../page/Config/Template';
-import LemmaConfig from '../page/Config/Lemma';
+import ConfigLayout from '@/layouts/ConfigLayout';
+import ComponentConfig from '@/page/Config/Component';
+import TemplateConfig from '@/page/Config/Template';
+import LemmaConfig from '@/page/Config/Lemma';
 
 export const router = createBrowserRouter([
     {

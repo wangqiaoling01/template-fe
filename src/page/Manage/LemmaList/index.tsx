@@ -1,11 +1,17 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
+import styles from '../list.module.scss';
+import ListSearch from '@/components/ListSearch';
 
-interface LemmaListProps {
-    [key: string]: any;
-}
-
-const LemmaList: FC<LemmaListProps> = (props: LemmaListProps) => {
-    return <div>LemmaList</div>;
+const LemmaList: FC = () => {
+    return (
+        <>
+            <div className={styles.header}>
+                <ListSearch />
+            </div>
+            <div className={styles.main}>list</div>
+            <div className={styles.footer}></div>
+        </>
+    );
 };
 
 export default LemmaList;

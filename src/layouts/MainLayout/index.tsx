@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './index.module.scss';
 
 import { Layout } from 'antd';
@@ -12,7 +12,9 @@ const MainLayout: FC = () => {
             <Content className={styles.main}>
                 <Outlet />
             </Content>
-            <Footer className={styles.footer}>footer</Footer>
+            <Footer className={styles.footer}>
+                xx &copy; 2024 - present. Created by wangqiaoqiao
+            </Footer>
         </Layout>
     );
 };
