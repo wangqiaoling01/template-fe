@@ -1,8 +1,14 @@
 import React from 'react';
-import style from './App.module.scss';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
+import 'normalize.css';
 
 function App() {
-  return <div className={style.App}>App</div>;
+    return (
+        <div>
+            <RouterProvider router={router} />
+        </div>
+    );
 }
 
 export default App;
