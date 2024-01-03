@@ -2,9 +2,12 @@
     display: flex;
     .left {
         background-color: #fff;
+        .menu {
+            border: none;
+        }
     }
     .right {
         flex: 1;
-        margin-left: 20px;
+        margin: 20px;
     }
 }

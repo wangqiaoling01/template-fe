@@ -1,7 +1,7 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Space, Layout, Menu } from 'antd';
+import { Button, Layout, Menu } from 'antd';
 import {
     AppstoreOutlined,
     ClusterOutlined,
@@ -10,6 +10,12 @@ import {
     MenuFoldOutlined,
 } from '@ant-design/icons';
 import { COMPONENT_LIST_PATHNAME, LEMMA_LIST_PATHNAME, TEMPLATE_LIST_PATHNAME } from '../../router';
+const MENU_MAP = {
+    component: COMPONENT_LIST_PATHNAME,
+    template: TEMPLATE_LIST_PATHNAME,
+    lemma: LEMMA_LIST_PATHNAME,
+};
+type menuType = 'component' | 'template' | 'lemma';
 
 const { Sider } = Layout;
 const ManageLayout: FC = () => {
@@ -18,6 +24,32 @@ const ManageLayout: FC = () => {
     const { pathname } = useLocation();
 
     const [collapsed, setCollapsed] = useState(false);
+
+    const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+
+    const onClick = ({ key }: { key: string }) => {
+        if (key === 'fold') {
+            setCollapsed(!collapsed);
+            setSelectedKeys([]);
+            return;
+        }
+
+        setSelectedKeys([key]);
+        nav(MENU_MAP[key as menuType]);
+    };
+
+    useEffect(() => {
+        let result = '';
+        if (pathname.startsWith(COMPONENT_LIST_PATHNAME)) {
+            result = 'component';
+        } else if (pathname.startsWith(TEMPLATE_LIST_PATHNAME)) {
+            result = 'template';
+        } else if (pathname.startsWith(LEMMA_LIST_PATHNAME)) {
+            result = 'lemma';
+        }
+        setSelectedKeys([result]);
+    }, [pathname]);
+
     return (
         <Layout className={styles.container}>
             <Sider
@@ -28,17 +60,14 @@ const ManageLayout: FC = () => {
                 collapsed={collapsed}
                 width={140}
             >
-                <Button
-                    type="text"
-                    icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                    onClick={() => setCollapsed(!collapsed)}
-                    style={{
-                        marginLeft: '23px',
-                    }}
-                />
                 <Menu
+                    className={styles.menu}
                     mode="inline"
                     items={[
+                        {
+                            key: 'fold',
+                            icon: collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />,
+                        },
                         {
                             key: 'component',
                             icon: <AppstoreOutlined />,
@@ -55,37 +84,9 @@ const ManageLayout: FC = () => {
                             label: '词条列表',
                         },
                     ]}
+                    onClick={onClick}
+                    selectedKeys={selectedKeys}
                 />
-                {/* <Space
-                    direction="vertical"
-                    align="center"
-                    style={{ width: '100%', backgroundColor: '#fff' }}
-                >
-                    <Button
-                        type={pathname.startsWith(COMPONENT_LIST_PATHNAME) ? 'default' : 'text'}
-                        size="large"
-                        icon={<AppstoreOutlined />}
-                        onClick={() => nav(COMPONENT_LIST_PATHNAME)}
-                    >
-                        组件列表
-                    </Button>
-                    <Button
-                        type={pathname.startsWith(TEMPLATE_LIST_PATHNAME) ? 'default' : 'text'}
-                        size="large"
-                        icon={<ClusterOutlined />}
-                        onClick={() => nav(TEMPLATE_LIST_PATHNAME)}
-                    >
-                        模板列表
-                    </Button>
-                    <Button
-                        type={pathname.startsWith(LEMMA_LIST_PATHNAME) ? 'default' : 'text'}
-                        size="large"
-                        icon={<BarsOutlined />}
-                        onClick={() => nav(LEMMA_LIST_PATHNAME)}
-                    >
-                        词条列表
-                    </Button>
-                </Space> */}
             </Sider>
             <div className={styles.right}>
                 <Outlet />
