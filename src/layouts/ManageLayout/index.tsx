@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
     AppstoreOutlined,
     ClusterOutlined,
@@ -9,7 +9,7 @@ import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
 } from '@ant-design/icons';
-import { COMPONENT_LIST_PATHNAME, LEMMA_LIST_PATHNAME, TEMPLATE_LIST_PATHNAME } from '../../router';
+import { COMPONENT_LIST_PATHNAME, LEMMA_LIST_PATHNAME, TEMPLATE_LIST_PATHNAME } from '@/constant';
 const MENU_MAP = {
     component: COMPONENT_LIST_PATHNAME,
     template: TEMPLATE_LIST_PATHNAME,

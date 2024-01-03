@@ -1,6 +1,7 @@
 .header {
     padding: 0 20px;
     background-color: #fff;
+    border: 1px solid #e8e8e8;
 }
 .main {
     min-height: calc(100vh - 64px - 64px);
@@ -8,6 +9,6 @@
 }
 .footer {
     text-align: center;
-    background-color: #f7f7f7;
+    background-color: #fff;
     border: 1px solid #e8e8e8;
 }

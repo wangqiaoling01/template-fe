@@ -36,7 +36,6 @@ const ListSearch: FC = () => {
     return (
         <Space direction="horizontal">
             <Input.Search
-                size="large"
                 placeholder="请输入关键词"
                 value={name}
                 onSearch={onSearch}
@@ -51,7 +50,6 @@ const ListSearch: FC = () => {
                 style={{ width: 200 }}
                 value={status}
                 defaultValue={status}
-                size="large"
                 onChange={onChange}
             />
         </Space>
